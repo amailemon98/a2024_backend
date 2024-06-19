@@ -6,16 +6,6 @@ const dotenv = require('dotenv');
 dotenv.config(); 
 
 
-const mariadb = require('mariadb');
-const pool = mariadb.createPool({
-    host: '127.0.0.1',
-    user: 'root',
-    port:'3306',
-    password:'12345',
-    database:'mydb',
-    connectionLimit: 5
-})
-
 /* 포트 설정 */
 app.set('port', process.env.PORT || 3000);
 
@@ -31,8 +21,6 @@ app.use((req, res, next)=>{
     next();
 })
 
-app.use('/users', require('./routes/users'));
-// database를 사용하지 않으므로 테스트 불가
 
 
 app.use('/makeup', require('./routes/makeup'));
